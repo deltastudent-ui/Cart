@@ -1,0 +1,30 @@
+
+
+<% layout("/layouts/boilerplate") %>
+
+<div class="big-contener" >
+    <div class="row">
+
+    <% for( card of cards) { %>
+        <div class="card"> 
+            <img src="<%= card.image %>" class="card-img-top img-c" alt="card image" style="height: 15rem;">
+            <div class="card-body">
+              <div class="description-container">
+                  <p class="card-text">
+                      <b><%= card.title %></b> <br>
+                      ₹ <%= card.price %> <br>
+                      <span class="text-muted"><%= card.description %></span>
+                  </p>
+                  <form action="http://localhost:3000/add-to-bag" method="post">
+                    <button class="btn btn-primary"> +add</button>
+                  </form>
+              </div>
+          </div>
+          </div>   
+    
+      <% } %>
+<!-- </div> -->
+</div>
+
+</div>  
+

@@ -1,0 +1,28 @@
+
+<nav class="navbar bg-body-tertiary border-bottom sticky-top nav-bar">
+ 
+  <div class="container-fluid ico">
+    
+      <a class="navbar-brand cart-a  " href="/cards"> <i class="fa-solid fa-cart-shopping  cart "></i><b>E-Cart</b> </a>
+    <form class="d-flex card-form col-5 input" role="search" action="/cards/search" method="get">
+      <input class="form-control me-2  " type="search" placeholder="Search" aria-label="Search" name="title">
+      <button class="btn btn-outline-success me-2 btn" type="submit">Search</button>
+    </form>
+
+    <div class="icons">
+      <% if (!currUser) { %>
+ <!-- agar user login nhi hai to signup and login  -->
+        <div class="nav-icon"><a href="/signup"><b>signup</b> </a> </div>
+       <div class="nav-icon" style="margin: 0;"> <a href="/login"> <img src="/image/log-in.png" alt="logout" style="height: 1.2rem; width: 1.2rem;"><b></b></a></div>
+
+      <% } else { %>  <!-- agar user login hai to logout aur bag ka option dikhega  -->
+       <div class="nav-icon">
+        <a href="/logout"><img src="/image/logou.png" alt="logout" style="height: 1.2rem; width: 1.2rem;"> </a> </div>
+       <div class="nav-icon"> <a href="/bags"> <b> <i class="fa-solid fa-bag-shopping"></i> </b> </a></div>
+      
+      <% } %>
+    </div>
+  </div>
+  
+  
+</nav>

@@ -1,0 +1,55 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<div class="big-contener">
+
+<div class="row">
+        <div class="card" style="width: 18rem;"> 
+           <img src="<%= card.image %>" class="card-img-top img-c" alt="card image" style="height: 15rem;">
+            <div class="card-body">
+              <div class="description-container">
+                  <p class="card-text">
+                      <b><%= card.title %></b> <br>
+                      ₹ <%= card.price %> <br>
+                      <span class="text-muted"><%= card.description %></span>
+                         
+                  </p>
+                  <form action="/place-order" method="get">      
+                    <% if(!card){ %>
+                        <h1 class=""> Cart is Empty</h1>
+                      <% } else{ %>
+                      <button type="submit" class=" btn" > Order</button>
+                        <% } %>
+                   
+              </div>
+             
+                  
+          </div>
+          </div>   
+ <hr>
+          <div class="offset-5"> <h2> Related item </h2> </div>
+
+          <div class="card-div">
+            <% for(let card of cards){ %>
+                <div class="card" style="width: 18rem;">
+                  <a href="/show/<%= card._id %>", style="text-decoration: none; color: black;" >
+                    <img src="<%= card.image %>" class="card-img-top img-c" alt="cards" style="height: 15rem;">
+                    <div class="card-body">
+                        <div class="description-container">
+                            <p class="card-text">
+                                <b><%= card.title %></b> <br>
+                                ₹ <%= card.price %> <br>
+                                <span class="text-muted"><%= card.description %></span>
+                            </p>
+                            <form action="/add-to-bag" method="POST" >
+                                <input type="hidden" name="productId" value="<%= card._id %>">
+                                <button type="submit" class="btn">Add</button>
+                            </form>
+                        </div>
+                    </div>
+                  </a>
+                </div>
+            <% } %>
+        </div>
+        
+        
+</div>
+</div>

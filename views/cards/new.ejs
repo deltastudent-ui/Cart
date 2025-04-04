@@ -1,0 +1,42 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<div class="big-contener" style="margin: 0;">
+    <div class="row">
+        <div class="col-8 offset-2" style="height: 81vh; overflow:hidden">
+            <h2 class="offset-4">add item in cart🙂 </h2>
+        <form action="/cards" class="needs-validation" method="post" enctype="multipart/form-data" >
+            <div class="mb-3">
+                <label for="name" class="form-label">Image</label>
+                <input type="file" name="image" placeholder="Link" class="form-control" required id="name">
+                <div class="valid-feedback"> looks good!</div>
+                <div class="invalid-feedback">past hear links</div>
+            </div>
+    
+            
+    
+            <div class="mb-3">
+                <label for="area" class="form-label" >Title</label>
+                <input name="title" id="area" class="form-control" required placeholder="Title">
+                <div class="invalid-feedback">Please enter <title></title></div>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Shop-name</label>
+                <input type="text" name="shop" placeholder="Shop name" class="form-control" required id="name">
+                <div class="valid-feedback"> looks good!</div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-md-6 ">
+                    <label for="number" class="form-label">description</label>
+                    <input name="description"  required class="form-control" id="number" placeholder="description">
+                    <div class="invalid-feedback">Price should be valid</div>
+                </div>
+            
+                <div class="mb-3 col-md-6">
+                    <label for="price" class="form-label">Price</label>
+                    <input name="price" required class="form-control" max="1" id="price" placeholder="price">
+
+                        <div class="invalid-feedback">Price should be grater than 10₹</div>
+                </div>
+              </div>
+              <button class="btn mt-4">add</button>
+          </form>
