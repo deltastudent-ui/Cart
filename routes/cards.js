@@ -18,6 +18,10 @@ const isLogedin = ((req,res , next)=>{
 });
 
 
+router.get("/",(req,res)=>{
+  res.redirect("cards/index.ejs");
+})
+
 // index route 
 router.get("/cards",async(req,res)=>{
     let allCard = await Card.find({});
