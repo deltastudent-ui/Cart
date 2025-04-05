@@ -2,72 +2,72 @@
 <body>
     
              <!-- images -->
-   <div class="big-contener">
-           <div class="row">
-                      
-                            <div class="banner-container" >
-                              <img src="/image/cookies-5392439_1280.jpg" alt="Supermarket Banner" class="banner-image"> 
-                      
-                              <!-- Discount Badge -->
-                              <div class="discount-badge">Opening Sale Discount 50%</div>
-                      
-                              <!-- Text Content -->
-                              <div class="text-content">
-                                  <h1>SuperMarket For bafers</h1>
-                                  <p>Introduced a new model for online <b>bafers</b> shopping and convenient home delivery.</p>
-                              </div>
-                      
-                              
-                      
-                              <!-- Delivery Badge -->
-                            <form action="">
-                              <button class="delivery-badge btn">Other shoping</button>
-                            </form>
-                              <form action="/new" method="get">
-                                <button class="btn btnn" style="background-color: aquamarine;"><b>add Item </b> </button>
-                              </form>
-                          </div>
-                      
-
-                           <!-- for two cards -->
-                          
-                          
-
-
-
-                           <!-- index cards -->
-                          <div class="card-div">
-                            <% for(let card of allCard){ %>
-                                <div class="card" style="width: 18rem;">
-                                  <a href="/show/<%= card._id %>", style="text-decoration: none; color: black;" >
-                                    <img src="<%= card.image %>" class="card-img-top img-c" alt="listings">
-                                    <p style="color: beige; font-size: 0.7rem;"> <b> <%= card.shop %></b> </p>
-                                    <div class="card-body" style="color: aqua;">
-                                        <div class="description-container">
-                                            <p class="card-text">
-                                                <b><%= card.title %></b> <br>
-                                                ₹ <%= card.price %> <br>
-                                                <span class="text-muted"><%= card.description %></span>
-                                            </p>
-                                            <form action="/add-to-bag" method="POST" >
-                                                <input type="hidden" name="productId" value="<%= card._id %>">
-                                                <button type="submit" class="btn">Add</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                  </a>
-                                </div>
-                            <% } %>
-                        </div>
-                        
-
-
-                        
-                       
+             <div class="big-contener">
+              <div class="row">
+                         
+                               <div class="banner-container" >
+                                 <img src="/image/cookies-5392439_1280.jpg" alt="Supermarket Banner" class="banner-image"> 
+                         
+                                 <!-- Discount Badge -->
+                                 <div class="discount-badge">Opening Sale Discount 50%</div>
+                         
+                                 <!-- Text Content -->
+                                 <div class="text-content">
+                                     <h1>SuperMarket For bafers</h1>
+                                     <p>Introduced a new model for online <b>bafers</b> shopping and convenient home delivery.</p>
+                                 </div>
+                         
+                                 
+                         
+                                 <!-- Delivery Badge -->
+                               <form action="">
+                                 <button class="delivery-badge btn">Other shoping</button>
+                               </form>
+                                 <form action="/new" method="get">
+                                   <button class="btn btnn" style="background-color: aquamarine;"><b>add Item </b> </button>
+                                 </form>
+                             </div>
+                         
+   
+                              <!-- for two cards -->
+                             
+                             
+   
+   
+   
+                              <!-- index cards -->
+                             <div class="card-div">
+                               <% for(let card of allCard){ %>
+                                   <div class="card" style="width: 18rem;">
+                                     <a href="/show/<%= card._id %>", style="text-decoration: none; color: black;" >
+                                       <img src="<%= card.image %>" class="card-img-top img-c" alt="listings">
+                                       <p style="color: beige; font-size: 0.7rem;"> <b> <%= card.shop %></b> </p>
+                                       <div class="card-body" style="color: aqua;">
+                                           <div class="description-container">
+                                               <p class="card-text">
+                                                   <b><%= card.title %></b> <br>
+                                                   ₹ <%= card.price %> <br>
+                                                   <span class="text-muted"><%= card.description %></span>
+                                               </p>
+                                               <form action="/add-to-bag" method="POST" >
+                                                   <input type="hidden" name="productId" value="<%= card._id %>">
+                                                   <button type="submit" class="btn">Add</button>
+                                               </form>
+                                           </div>
+                                       </div>
+                                     </a>
+                                   </div>
+                               <% } %>
+                           </div>
                            
-       </div>   </div>
-
-
+   
+   
+                           
+                          
+                              
+          </div>   </div>
+   
+   
 </body>
 
 

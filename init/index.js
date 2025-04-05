@@ -4,6 +4,7 @@ const initdata = require("./data.js");
 const cardSchema = require("../model/cardSchema.js");
 const Card = require("../model/cardSchema.js");
 const cardData = require("./data.js");
+const Dres = require("../model/dress.js");
 
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/Ecomerce";
@@ -21,8 +22,8 @@ async function main() {
 }
 
 const initDB = async () => {
-  await Card.deleteMany({});
- await Card.insertMany(initdata.data);
+  await Dres.deleteMany({});
+ await Dres.insertMany(initdata.data);
  console.log("data was initialize");
 };
 

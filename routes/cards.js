@@ -8,7 +8,8 @@ const {cardSchema} = require("../joi.js");
 
 const {CloudinaryStorage} = require("multer-storage-cloudinary");
 const multer = require("multer");
-const {cloudinary,upload} = require("../config.js")
+const {cloudinary,upload} = require("../config.js");
+const Dres = require("../model/dress.js");
 const isLogedin = ((req,res , next)=>{
     if(!req.isAuthenticated()){
         req.flash("error", "you must be loged in ");
@@ -135,8 +136,9 @@ router.post("/place-order",async(req,res,next)=>{
 router.get("/cards/Search",async (req,res)=>{
     const query = req.query?.title;
     const cards = await Card.find({title:{ $regex: query, $options: "i" }});
-    if(!cards){
+    if(cards.length === 0){
         req.flash("error", "Item was not found");
+        res.redirect("/cards");
     }
     res.render("cards/search.ejs", {cards});
 });
@@ -173,9 +175,7 @@ router.post("/cards",upload.single("image"), isLogedin , async(req, res)=>{
 
 // dreses 
 
-router.get("/dreses", async(req,res)=>{
-res.render("dress/dreses.ejs")
-})
+
 
 
 
