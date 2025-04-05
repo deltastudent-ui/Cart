@@ -1,0 +1,89 @@
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background-color: rgb(69, 54, 54);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      text-align: center;
+      color: #fff;
+      animation: fadeInUp 1.5s ease forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: fadeInText 2s ease forwards;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      background-color: white;
+      color: #56ab2f;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: fadeInText 2.5s ease forwards;
+    }
+
+    button:hover {
+      background-color: #e0e0e0;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
+
+<body>
+  <div class="container">
+    <h1>Welcome to Fresh Cart</h1>
+<form action="/cards" method="get">
+  <button>Click to Start</button>
+
+</form>  
+</div>
+
+</body>
+</html>

@@ -20,6 +20,10 @@ const isLogedin = ((req,res , next)=>{
 
 
 
+router.get("/", (req,res)=>{
+res.render("cards/home.ejs");
+})
+
 // index route 
 router.get("/cards",async(req,res)=>{
     let allCard = await Card.find({});
@@ -166,4 +170,13 @@ router.post("/cards",upload.single("image"), isLogedin , async(req, res)=>{
     res.redirect("/new");
   }
 })
+
+// dreses 
+
+router.get("/dreses", async(req,res)=>{
+res.render("dress/dreses.ejs")
+})
+
+
+
 module.exports= router;

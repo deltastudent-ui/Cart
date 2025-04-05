@@ -20,8 +20,8 @@
                               
                       
                               <!-- Delivery Badge -->
-                            <form action="/dreses" method="get">
-                              <button class="delivery-badge btn">Cloth shoping</button>
+                            <form action="">
+                              <button class="delivery-badge btn">Other shoping</button>
                             </form>
                               <form action="/new" method="get">
                                 <button class="btn btnn" style="background-color: aquamarine;"><b>add Item </b> </button>
@@ -36,10 +36,7 @@
 
 
                            <!-- index cards -->
-                          
-
-
-                           <div class="card-div">
+                          <div class="card-div">
                             <% for(let card of allCard){ %>
                                 <div class="card" style="width: 18rem;">
                                   <a href="/show/<%= card._id %>", style="text-decoration: none; color: black;" >
@@ -62,6 +59,9 @@
                                 </div>
                             <% } %>
                         </div>
+                        
+
+
                         
                        
                            
