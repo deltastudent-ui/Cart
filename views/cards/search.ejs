@@ -7,6 +7,7 @@
 
     <% for( card of cards) { %>
         <div class="card"> 
+            <a href="/show/<%= card._id %>", style="text-decoration: none; color: black;" >
             <img src="<%= card.image %>" class="card-img-top img-c" alt="card image" style="height: 15rem;">
             <div class="card-body">
               <div class="description-container">
@@ -20,6 +21,8 @@
                   </form>
               </div>
           </div>
+          
+         </a>
           </div>   
     
       <% } %>
