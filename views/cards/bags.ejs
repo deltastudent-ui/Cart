@@ -1,6 +1,9 @@
 
 <% layout("/layouts/boilerplate") %>
 
+
+<form action="/place-order" method="get">
+
 <div class="big-contener">
     <div class="row">
     <% for( card of itemUser) { %>
@@ -12,8 +15,8 @@
                   <b><%= card.title %></b> <br>
                   ₹ <%= card.price %> <br>
                   <span class="text-muted"><%= card.description %></span>
-                     <input type="checkbox" name="order" value="<%= card._id %>">
-                     
+             
+                      <input type="checkbox" name="order" value="<%= card._id %>">
               </p>
                <form action="/bags/<%= card._id %>?_method=DELETE" method="post">
                 <button class="border-0 bg-transparent p-0">remove</button>
@@ -23,7 +26,6 @@
       </div>   
 
         <% } %>
-        <form action="/place-order" method="get">
         <% if(itemUser.length > 0){ %>
           <button type="submit" class=" btn" >Place Order</button>
           <% } else{ %>
@@ -34,3 +36,24 @@
 
 </div>  
 
+<script>
+  let form = document.querySelector('form[action="/place-order"]');
+  let input = document.querySelectorAll('input[name= "order"]');
+
+ form.addEventListener("submit", function(e){
+  let a = true;
+  for(let chek of input){
+    if(chek.checked){
+      a= false
+      break;
+    }
+  }
+  if(a){
+    e.preventDefault(); 
+    alert("please select item ")
+
+  }  
+ });
+
+
+</script>

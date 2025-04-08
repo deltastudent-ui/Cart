@@ -18,7 +18,7 @@ router.post("/login", passport.authenticate("local",{
     failureFlash:true
 }), async(req,res)=>{
 
-      req.flash("success", "wellcome to FreshCart", req.user.username);
+      req.flash("success", "wellcome to E-Cart", req.user.username);
             res.redirect("/cards");
 })
 
@@ -40,7 +40,7 @@ router.post("/signup", async(req, res, next) => {
                 return next(err);  // `next(err)` properly handle 
             }
             
-            req.flash("success", "Welcome to FreshCart, ",  username);
+            req.flash("success", "Welcome to E-cart, ",  username);
              res.redirect("/cards");  // Yahan redirect 
         });
 

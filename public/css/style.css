@@ -412,14 +412,14 @@ label{
 
     overflow: hidden;
   
-    /* background-image: url("/image/ice-8867431_1280.png"); */
+   
 }
 
 .login-body{
     overflow: hidden;
     height: 100%;
     width: 100%;
-    background-image: url("/image/ice-8867431_1280.png");
+  
 }
 
 @media (max-width:1024px){
@@ -476,7 +476,7 @@ label{
     }
 }
 .signUp-image{
-    background-image: url("/image/signup.jpg");
+   background-color: rgb(107, 84, 84);
 }
 
 .alert {
@@ -529,4 +529,34 @@ label{
     text-decoration: none;
     width: 100%;
     max-width: 250px;
+}
+.btnnn{
+    background-color: #ff4d4f;      /* red-ish color */
+  color: white;
+  border: none;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.btnnn:hover {
+    background-color: #00997a;
+  }
+@media(max-width:575px){
+    .btnnn{
+       
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            font-size: inherit;
+          
+        position: absolute;
+        left: 55%;
+        top: 71%;
+    }
 }

@@ -3,8 +3,10 @@
 
 <div class="row">
         <div class="card" style="width: 18rem;"> 
-           <img src="<%= card.image %>" class="card-img-top img-c" alt="card image" style="height: 15rem;">
-            <div class="card-body">
+           <img src="<%= card.image %>" class="card-img-top img-c" alt="card image" style="height: 12rem;">
+           <p style="color: beige; font-size: 0.7rem;"> <b> <%= card.shop %></b> </p>
+
+            <div class="card-body" style=" margin: 0; padding: 0.5rem;">
               <div class="description-container">
                   <p class="card-text">
                       <b><%= card.title %></b> <br>
@@ -18,25 +20,31 @@
                       <% } else{ %>
                       <button type="submit" class=" btn" > Order</button>
                         <% } %>
-                   
+                  </form>
+                  <% if (currUser && card.user && card.user.equals(currUser._id)) { %>
+                    <form action="/show/delete/<%= card._id %>?_method=DELETE" method="post">
+                      <button class=" btnnn">Delete</button>
+                    </form>
+                  <% } %>
               </div>
              
                   
           </div>
           </div>   
  <hr>
-          <div class="offset-5"> <h2> Related item </h2> </div>
+          <div > <h2> Related item </h2> </div>
 
           <div class="card-div">
             <% for(let card of cards){ %>
                 <div class="card" style="width: 18rem;">
                   <a href="/show/<%= card._id %>", style="text-decoration: none; color: black;" >
-                    <img src="<%= card.image %>" class="card-img-top img-c" alt="cards" style="height: 15rem;">
-                    <div class="card-body">
+                    <img src="<%= card.image %>" class="card-img-top img-c" alt="listings" style="height: 12rem; ">
+                    <p style="color: beige; font-size: 0.7rem;margin-left: 0.5rem;"> <b> <%= card.shop %></b> </p>
+                    <div class="card-body" style="color: aqua; margin: 0; padding: 1rem;" >
                         <div class="description-container">
                             <p class="card-text">
                                 <b><%= card.title %></b> <br>
-                                ₹ <%= card.price %> <br>
+                                ₹ <%= card.price %>/- <br>
                                 <span class="text-muted"><%= card.description %></span>
                             </p>
                             <form action="/add-to-bag" method="POST" >
@@ -49,6 +57,7 @@
                 </div>
             <% } %>
         </div>
+       
         
         
 </div>

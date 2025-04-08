@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Cart = require("./bagSchema");
+const { ref } = require("joi");
 const Schema = mongoose.Schema;
 
 const cardSchema = new Schema({
@@ -27,6 +28,12 @@ const cardSchema = new Schema({
        type:String,
        require:true,
        default:"ajay's store🙂"
+    },
+
+    user:{
+        type:mongoose.Schema.ObjectId,
+        ref:"User"
+        
     }
 
 });

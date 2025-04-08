@@ -3,13 +3,12 @@ let path = require("path");
 const Card = require("../model/cardSchema")
 const User = require("../model/user.js");
 let router = express.Router();
-
+const Cart = require("../model/cardSchema.js")
 const {cardSchema} = require("../joi.js");
 
 const {CloudinaryStorage} = require("multer-storage-cloudinary");
 const multer = require("multer");
 const {cloudinary,upload} = require("../config.js");
-const Dres = require("../model/dress.js");
 const isLogedin = ((req,res , next)=>{
     if(!req.isAuthenticated()){
         req.flash("error", "you must be loged in ");
@@ -88,9 +87,13 @@ router.delete("/bags/:id",async(req,res)=>{
 })
 
 
-router.get("/place-order", (req,res)=>{
+router.get("/place-order", isLogedin, async(req,res)=>{
   try{
-    let extrat = req.body.order;
+    let id = req.query.order;
+    let allCard =await Card.findById(id)
+const orderedItems = await Cart.find({_id:id});
+ let a =   await Cart.deleteMany({_id:id});
+
     if(!req.user.address){
   res.render("cards/place.ejs");
     }
@@ -105,7 +108,7 @@ router.get("/place-order", (req,res)=>{
   }
 });
 
-router.post("/place-order",async(req,res,next)=>{
+router.post("/place-order",isLogedin ,async(req,res,next)=>{
    try{
     let user = req.user._id;
     let {name, area, number, pincode, state ,district} = req.body;
@@ -128,6 +131,7 @@ router.post("/place-order",async(req,res,next)=>{
     );
      res.redirect("/place-order");
 }   catch(err){
+  console.log(err)
     req.flash("error",err.message)
      return res.redirect("/cards")
    }
@@ -159,7 +163,7 @@ router.post("/cards",upload.single("image"), isLogedin , async(req, res)=>{
     shop:shop,
     description: description,
     price:price,
-
+    user:req.user._id
   })
 
   await card.save();
@@ -168,15 +172,40 @@ router.post("/cards",upload.single("image"), isLogedin , async(req, res)=>{
   }
   catch(err){
     console.log(err);
-    req.flash("error", err.message || "Something went wrong!"); // ✅ Yeh error ko properly dikhaayega
+    req.flash("error", err.message || "Something went wrong!"); //  Yeh error ko properly dikhaayega
     res.redirect("/new");
   }
 })
 
-// dreses 
+
+router.get("/order", async(req,res)=>{
+   let id = req.query.order
+   await Cart.findByIdAndDelete(id);
+  let allCard = await Card.findById(id);
+  res.render("cards/order.ejs", {allCard: allCard});
+})
+
+router.delete("/show/delete/:id",async(req,res)=>{
+  try{
+    let {id} = req.params;
+  const card = await Card.findById(id);
 
 
+  if (!card) {
+    req.flash("error", "Card not found");
+    return res.redirect("/cards");
+  }
 
+  
+ await  Card.findByIdAndDelete(id);
+ req.flash("success", "item deleted successfully");
+ res.redirect(`/cards`)
+  }
+  catch(err){
+        req.flash(err.message);
+        res.redirect(`/cards`)
+  }
+})
 
 
 module.exports= router;

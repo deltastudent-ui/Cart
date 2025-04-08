@@ -43,13 +43,13 @@
                             <% for(let card of allCard){ %>
                                 <div class="card" style="width: 18rem;">
                                   <a href="/show/<%= card._id %>", style="text-decoration: none; color: black;" >
-                                    <img src="<%= card.image %>" class="card-img-top img-c" alt="listings">
-                                    <p style="color: beige; font-size: 0.7rem;"> <b> <%= card.shop %></b> </p>
-                                    <div class="card-body" style="color: aqua;">
+                                    <img src="<%= card.image %>" class="card-img-top img-c" alt="listings" style="height: 12rem; ">
+                                    <p style="color: beige; font-size: 0.7rem; margin-left: 0.5rem;"> <b> <%= card.shop %></b> </p>
+                                    <div class="card-body" style="color: aqua; margin: 0; padding: 0.5rem;" >
                                         <div class="description-container">
                                             <p class="card-text">
                                                 <b><%= card.title %></b> <br>
-                                                ₹ <%= card.price %> <br>
+                                                ₹ <%= card.price %>/- <br>
                                                 <span class="text-muted"><%= card.description %></span>
                                             </p>
                                             <form action="/add-to-bag" method="POST" >

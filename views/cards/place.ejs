@@ -1,7 +1,9 @@
 <% layout("/layouts/boilerplate.ejs") %>
 <div class="big-contener">
 <div class="row">
-    <div class="col-8 offset-2">
+    <h3 class="offset-2  mb-4">For Address</h3>
+
+    <div class="col-8 offset-2 ">
     <form action="/place-order" class="needs-validation" method="post" >
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
@@ -22,13 +24,13 @@
         <div class="row">
             <div class="mb-3 col-md-6 ">
                 <label for="number" class="form-label">Phone No</label>
-                <input name="number"  required class="form-control" id="number" placeholder="Mobile-no">
+                <input name="number"  required class="form-control" id="number" maxlength="10" placeholder="Mobile-no">
                 <div class="invalid-feedback">Price should be valid</div>
             </div>
         
             <div class="mb-3 col-md-6">
                 <label for="pincode" class="form-label">Pin Code</label>
-                <input name="pincode" required class="form-control" id="pincode" placeholder="Area-pincode">
+                <input name="pincode" required class="form-control" maxlength="6" id="pincode" placeholder="Area-pincode">
                 <div class="invalid-feedback">Price should be valid</div>
             </div>
           </div>
@@ -56,8 +58,8 @@
             </div>
           </div>
       
-        <br><br>
-        <button class="btn btn-dark add-btn">Add</button>
+        <br>
+        <button class="btn btn-dark add-btn" >Add</button>
         <br><br>
     </form>
     </div>
