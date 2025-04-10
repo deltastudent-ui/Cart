@@ -91,6 +91,10 @@ const mongoose = require("mongoose");
 
 router.get("/place-order", isLogedin, async (req, res) => {
   try {
+    const today = new Date();
+    today.setDate(today.getDate() + 4); 
+    const futureDate = today.toLocaleDateString("en-GB");
+
     let id = req.query.order;
     const userId = req.user._id;
 
@@ -107,7 +111,7 @@ router.get("/place-order", isLogedin, async (req, res) => {
     if (!req.user.address) {
       res.render("cards/place.ejs");
     } else {
-      res.render("cards/sucsess.ejs");
+      res.render("cards/sucsess.ejs", {futureDate});
     }
   } catch (err) {
     console.error("🔥 Error:", err);
