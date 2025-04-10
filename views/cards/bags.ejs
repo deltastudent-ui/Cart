@@ -2,7 +2,7 @@
 <% layout("/layouts/boilerplate") %>
 
 
-<form action="/place-order" method="get">
+<form action="/place-order" method="get" id="place-order-btn"
 
 <div class="big-contener">
     <div class="row">
@@ -11,15 +11,15 @@
         <img src="<%= card.image %>" class="card-img-top img-c" alt="card image" style="height: 15rem;">
         <div class="card-body">
           <div class="description-container">
-              <p class="card-text">
+              <p class="card-text" >
                   <b><%= card.title %></b> <br>
                   ₹ <%= card.price %> <br>
                   <span class="text-muted"><%= card.description %></span>
              
-                      <input type="checkbox" name="order" value="<%= card._id %>">
+                      <input type="checkbox" name="order" value="<%= card._id %>" class="input">
               </p>
                <form action="/bags/<%= card._id %>?_method=DELETE" method="post">
-                <button class="border-0 bg-transparent p-0">remove</button>
+                <button  class="border-0 bg-transparent p-0">remove</button>
                </form>
           </div>
       </div>
@@ -27,7 +27,7 @@
 
         <% } %>
         <% if(itemUser.length > 0){ %>
-          <button type="submit" class=" btn" >Place Order</button>
+          <button type="submit" class=" button btn" onclick="Triger" >Place Order</button>
           <% } else{ %>
               <h1 class=""> Cart is Empty</h1>
             <% } %>
@@ -54,6 +54,5 @@
 
   }  
  });
-
 
 </script>

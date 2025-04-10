@@ -69,12 +69,12 @@ router.get("/bags",async(req,res,next)=>{
     let user = await User.findById(currUser).populate("item");
 
    res.render("cards/bags.ejs",{itemUser:user.item});
-
    }
    catch(err){
     req.flash("error", "you must be loged in / signUp " , err.message);
     res.redirect("/cards");
    }
+   
 });
 
 router.delete("/bags/:id",async(req,res)=>{
@@ -87,26 +87,36 @@ router.delete("/bags/:id",async(req,res)=>{
 })
 
 
-router.get("/place-order", isLogedin, async(req,res)=>{
-  try{
+const mongoose = require("mongoose");
+
+router.get("/place-order", isLogedin, async (req, res) => {
+  try {
     let id = req.query.order;
-    let allCard =await Card.findById(id)
-const orderedItems = await Cart.find({_id:id});
- let a =   await Cart.deleteMany({_id:id});
+    const userId = req.user._id;
 
-    if(!req.user.address){
-  res.render("cards/place.ejs");
+    // Use safe ObjectId conversion
+    const itemIds = Array.isArray(id)
+      ? id.map(i => mongoose.Types.ObjectId.createFromHexString(i))
+      : [mongoose.Types.ObjectId.createFromHexString(id)];
+
+    // Pull item(s) from array
+    await User.findByIdAndUpdate(userId, {
+      $pull: { item: { $in: itemIds } }
+    }, { new: true });
+
+    if (!req.user.address) {
+      res.render("cards/place.ejs");
+    } else {
+      res.render("cards/sucsess.ejs");
     }
-   else{
-    res.render("cards/sucsess.ejs");
-
-   }  
-  }
-  catch(err){
-    req.flash("error", err.message)
-      res.redirect("/bags");
+  } catch (err) {
+    console.error("🔥 Error:", err);
+    req.flash("error", err.message);
+    res.redirect("/bags");
   }
 });
+
+
 
 router.post("/place-order",isLogedin ,async(req,res,next)=>{
    try{
@@ -178,12 +188,7 @@ router.post("/cards",upload.single("image"), isLogedin , async(req, res)=>{
 })
 
 
-router.get("/order", async(req,res)=>{
-   let id = req.query.order
-   await Cart.findByIdAndDelete(id);
-  let allCard = await Card.findById(id);
-  res.render("cards/order.ejs", {allCard: allCard});
-})
+
 
 router.delete("/show/delete/:id",async(req,res)=>{
   try{
@@ -206,6 +211,8 @@ router.delete("/show/delete/:id",async(req,res)=>{
         res.redirect(`/cards`)
   }
 })
+
+
 
 
 module.exports= router;

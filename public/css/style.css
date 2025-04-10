@@ -498,7 +498,7 @@ label{
 /* Flash msg autmatic 0.5sec bad  hat jayega */
 .alert.fade-out {
     opacity: 0;
-    transition: opacity 0.5s ease-out;
+    transition: opacity 1s ease-out;
 }
 
 /* shipiing  */
